@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\CrudController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get("/",function(){
-    return view('welcome');
-});
+Route::get("/",[CrudController::class, 'getAll']);
 
 Route::get('/{locale}', function ($locale){
     
@@ -23,3 +21,5 @@ Route::get('/{locale}', function ($locale){
 
     return redirect('/');
 });
+
+Route::resource('todo', CrudController::class);
